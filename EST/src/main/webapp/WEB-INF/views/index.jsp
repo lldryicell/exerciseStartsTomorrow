@@ -236,7 +236,7 @@
       <!-- partial -->
         <div class="page-content-wrapper-inner">
           	<div class="content-viewport">
-      			<!-- code here -->
+      			<!-- code here --> 
       		</div>
       	</div>
       </c:if>
