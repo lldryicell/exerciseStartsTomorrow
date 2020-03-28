@@ -22,7 +22,7 @@ public class UserService {
 
 	public int signup(UserVO user) {
 		// TODO Auto-generated method stub
-		String user_seq = util.getToday() + (int) Math.random() * 10;
+		String user_seq = util.createSeq("user");
 		
 		user.setUser_seq(user_seq);
 		user.setUser_active(true);
