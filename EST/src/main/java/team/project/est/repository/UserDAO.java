@@ -24,6 +24,21 @@ public class UserDAO {
 		}
 		return result;
 	}
+
+	public int signup(UserVO user) {
+		// TODO Auto-generated method stub
+		UserMapper mapper = session.getMapper(UserMapper.class);
+		int result = 0;
+		
+		System.out.println(user);
+		 
+		try {
+			result = mapper.signup(user);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return result;
+	}
 	
 	
 }

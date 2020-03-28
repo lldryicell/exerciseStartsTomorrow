@@ -38,25 +38,80 @@
             <div class="grid-body">
               <div class="row">
                 <div class="col-lg-7 col-md-8 col-sm-9 col-12 mx-auto form-wrapper">
-                  <form action="#">
-                    <div class="form-group input-rounded">
-                      <input type="text" class="form-control" placeholder="Username" />
-                    </div>
-                    <div class="form-group input-rounded">
-                      <input type="password" class="form-control" placeholder="Password" />
-                    </div>
-                    <div class="form-inline">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" class="form-check-input" />Remember me <i class="input-frame"></i>
-                        </label>
+                  <form action="signupNew" id="signupForm" method="post">
+                  	<span style="color: red">*표는 필수 입력 사항입니다.</span><br><br>
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">*ID</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <input type="text" class="form-control" id="user_id" name="user_id" placeholder="Sara Watson">
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block"> Login </button>
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">*Password</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <input type="text" class="form-control" id="user_pw" name="user_pw" placeholder="Sara Watson">
+                      </div>
+                    </div>
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">*First name</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <input type="text" class="form-control" id="user_first_name" name="user_first_name" placeholder="first name">
+                      </div>
+                    </div>
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">*Last Name</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <input type="text" class="form-control" id="user_last_name" name="user_last_name" placeholder="last name">
+                      </div>
+                    </div>
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">*Nickname</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <input type="text" class="form-control" id="user_nick" name="user_nick" placeholder="nickname">
+                      </div>
+                    </div>
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">*Age</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <input type="number" class="form-control" id="user_age" name="user_age" placeholder="0~100" min="0" max="100">
+                      </div>
+                    </div>
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">*Gender</label>
+                      </div>
+                        <div class="col-md-9 showcase_content_area">
+                          <select class="custom-select" name="user_gender">
+                            <option selected="selected" value="male">Male</option>
+                            <option value="female">Female</option>
+                          </select>
+                        </div>
+                      </div>
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">Email Address</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <input type="email" class="form-control" id="user_email" name="user_email" placeholder="aaa@aaa.com">
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
                   </form>
                   <div class="signup-link">
-                    <p>Don't have an account yet?</p>
-                    <a href="indexPage">Sign Up</a>
+                    <p>Do you Already have Account??</p>
+                    <a href="loginPage">Login</a>
                   </div>
                 </div>
               </div>

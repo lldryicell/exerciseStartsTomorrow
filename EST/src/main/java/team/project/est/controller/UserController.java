@@ -43,5 +43,17 @@ public class UserController {
 		return "login";
 	}
 	
+	@RequestMapping(value = "/signupNew", method = RequestMethod.POST)
+	public String signupNew(UserVO user, Model model) {
+		int result = us.signup(user);
+		if (result==1) {
+			model.addAttribute("message", "Signup Success");
+			return "login";
+		} else {
+			model.addAttribute("message", "Signup Failed. Try Agane!");
+			return "signupPage";
+		}
+	}
+	
 	
 }

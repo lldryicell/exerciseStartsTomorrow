@@ -22,4 +22,31 @@
 	    		and
 	    		user_pw = #{user_pw}
 	    </select>
+	    <insert id="signup" parameterType="user">
+	    	insert into
+	    		user(
+		    		user_seq,
+		    		user_id,
+		    		user_pw,
+		    		user_first_name,
+		    		user_last_name,
+		    		user_nick,
+		    		user_age,
+		    		user_gender,
+		    		user_email,
+		    		user_active
+	    		)
+	    	values(
+	    		#{user_seq},
+	    		#{user_id},
+	    		#{user_pw},
+	    		#{user_first_name},
+	    		#{user_last_name},
+	    		#{user_nick},
+	    		#{user_age},
+	    		#{user_gender},
+	    		#{user_email},
+	    		#{user_active}
+	    	)
+	    </insert>
 	</mapper>
