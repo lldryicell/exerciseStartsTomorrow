@@ -21,6 +21,12 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/demo_1/style.css">
     <!-- Layout style -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/asssets/images/favicon.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+    		
+    	});
+    </script>
   </head>
   <body class="header-fixed">
     <!-- partial:partials/_header.html -->
@@ -188,13 +194,13 @@
 	        <ul class="navigation-menu">
 	          <li class="nav-category-divider">MAIN</li>
 	          <li>
-	            <a href="index.html">
+	            <a href="indexPage">
 	              <span class="link-title">Calendar&Todo</span>
 	              <i class="mdi mdi-gauge link-icon"></i>
 	            </a>
 	          </li>
 	          <li>
-	            <a href="pages/charts/chartjs.html">
+	            <a href="chartPage">
 	              <span class="link-title">User Analysis Charts</span>
 	              <i class="mdi mdi-chart-donut link-icon"></i>
 	            </a>
@@ -205,6 +211,13 @@
 	              <i class="mdi mdi-logout link-icon"></i>
 	            </a>
 	          </li>
+		      <li class="nav-category-divider">DOCS</li>
+		      <li>
+		        <a href="${pageContext.request.contextPath}/resources/docs/docs.html">
+		          <span class="link-title">Documentation</span>
+		          <i class="mdi mdi-asterisk link-icon"></i>
+		        </a>
+		      </li>
 	        </ul>
       	</c:if>
       	<c:if test="${sessionScope.user_seq == null}"><!-- 접속한 유저가 로그인 하지 않았을 경우 -->
