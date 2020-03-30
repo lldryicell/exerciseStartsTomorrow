@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import team.project.est.dto.UserVO;
 import team.project.est.service.UserService;
@@ -52,6 +53,22 @@ public class UserController {
 		} else {
 			model.addAttribute("message", "Signup Failed. Try Agane!");
 			return "signupPage";
+		}
+	}
+	
+
+	//----------------<JQuery>----------------//
+	
+	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
+	@ResponseBody
+	public String loginCheck(UserVO user_id) {
+		
+		UserVO result = us.searchUser(user_id);
+		
+		if (result==null) {//입력한 아이디에 맞는 계정이 존재 하지 않을 경우
+			return "available";
+		} else {
+			return "nonAvailable";
 		}
 	}
 	
