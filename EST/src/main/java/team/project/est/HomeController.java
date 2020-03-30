@@ -30,4 +30,9 @@ public class HomeController {
 		return "signup";
 	}
 	
+	@RequestMapping(value = "/chartPage", method = RequestMethod.GET)
+	public String chartPage() {
+		return "chart";
+	}
+	
 }
