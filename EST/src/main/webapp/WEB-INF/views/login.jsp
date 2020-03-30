@@ -30,9 +30,9 @@
     			var user_pw = $("#user_pw").val();
     			
     			if(user_id!=''){
-    				if(user_id.length<=20 && user_id.length>=6){
+    				if(user_id.length<=20 && user_id.length>=3){
     					if(user_pw!=''){
-    						if(user_pw.length<=20 && user_pw.length>=6){
+    						if(user_pw.length<=20 && user_pw.length>=3){
     							$("#loginForm").submit();
     						}else{
     	    					alert("USER PW is 6 to 20 length of eng+number collection");
