@@ -30,10 +30,18 @@
     			var user_pw = $("#user_pw").val();
     			
     			if(user_id!=''){
-    				if(user_pw!=''){
-    					$("#loginForm").submit();
+    				if(user_id.length<=20 && user_id.length>=6){
+    					if(user_pw!=''){
+    						if(user_pw.length<=20 && user_pw.length>=6){
+    							$("#loginForm").submit();
+    						}else{
+    	    					alert("USER PW is 6 to 20 length of eng+number collection");
+    						}
+        				} else{
+        					alert("please input PW");
+        				}
     				} else{
-    					alert("please input PW");
+    					alert("USER ID is 6 to 20 length of eng+number collection");
     				}
     			}else{
     				alert("please input ID");
@@ -46,7 +54,7 @@
     <div class="authentication-theme auth-style_1">
       <div class="row">
         <div class="col-12 logo-section">
-          <a href="../../index.html" class="logo">
+          <a href="indexPage" class="logo">
             <img src="${pageContext.request.contextPath}/resources/assets/images/logo.svg" alt="logo" />
           </a>
         </div>

@@ -22,12 +22,112 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/demo_1/style.css">
     <!-- Layout style -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/assets/images/favicon.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+    		
+    		var isPwChecked = false;
+    		var isIdChecked = false;
+    		
+    		$("#registerButton").click(function(){
+    			var user_id = $("#user_id").val();
+    			var user_pw = $("#user_pw").val();
+    			var pwchk = $("#pwChk").val();
+    			var user_first_name = $("#user_first_name").val();
+    			var user_last_name = $("#user_last_name").val();
+    			var user_nick = $("#user_nick").val();
+    			var user_age = $("#user_age").val();
+    			
+    			if(isIdChecked){
+    				if(user_pw!=''){
+						if(user_pw.length<=20 && user_pw.length>=6){
+							if(isPwChecked){
+								if(user_first_name!=''){
+    								if(user_last_name!=''){
+    									if(user_nick!=''){
+    										if(user_age>=0 && user_age<=100){
+    							    			$("#signupForm").submit();
+    		    	        				} else{
+    		    	        					alert("age is 0 to 100");
+    		    	        				}
+    	    	        				} else{
+    	    	        					alert("please input nick name");
+    	    	        				}
+        	        				} else{
+        	        					alert("please input last name");
+        	        				}
+    	        				} else{
+    	        					alert("please input first name");
+    	        				}
+							}else{
+								alert("inputed PasswordCheck is not equal Password");
+							}
+						}else{
+	    					alert("USER PW is 6 to 20 length of eng+number collection");
+						}
+    				} else{
+    					alert("please input PW");
+    				}
+    			}else{
+    				alert("Id Check first, please");
+    			}
+    		});
+    		
+    		$("#pwChk").change(function(){
+    			var user_pw = $("#user_pw").val();
+    			var pwchk = $("#pwChk").val();
+    			
+    			if(user_pw == pwchk){
+    				isPwChecked = true;
+    			}else{
+    				isPwChecked = false;
+    			}
+    		});
+    		
+    		$("#user_pw").change(function(){
+    			isPwChecked = false;
+    		});
+    		
+    		$("#idChk").click(function(){
+    			var user_id = $("#user_id").val();
+    			
+    			if(user_id!=''){
+    				if(user_id.length<=20 && user_id.length>=6){
+    					$.ajax({
+    						url : "idChk",
+    						data : {"user_id":user_id},
+    						type : "POST",
+    						success : function(serverData){
+    							if(serverData == "available"){
+    								alert("this id is available!");
+    								isIdChecked = true;
+    								$("#idChk").val("Checked!");
+    							}else {
+    								alert("this id is not available,,");
+    								isIdChecked = false;
+    							}
+    						}
+    					});
+    				} else{
+    					alert("USER ID is 6 to 20 length of eng+number collection");
+    				}
+    			} else{
+    				alert("please input ID");
+    			}
+    		});
+			
+			$("#user_id").change(function(){
+				isIdChecked = false;
+				$("#idChk").val("id check");
+			});
+    	});
+    </script>
   </head>
   <body>
     <div class="authentication-theme auth-style_1">
       <div class="row">
         <div class="col-12 logo-section">
-          <a href="../../index.html" class="logo">
+          <a href="indexPage" class="logo">
             <img src="${pageContext.request.contextPath}/resources/assets/images/logo.svg" alt="logo" />
           </a>
         </div>
@@ -45,15 +145,24 @@
                         <label for="inputType1">*ID</label>
                       </div>
                       <div class="col-md-9 showcase_content_area">
-                        <input type="text" class="form-control" id="user_id" name="user_id" placeholder="Sara Watson">
+                        <input type="text" class="form-control" id="user_id" name="user_id" placeholder="6 - 20, eng+number collection">
                       </div>
+                      <div id="idChk" class="btn btn-outline-success btn-rounded">id check</div>
                     </div>
                     <div class="form-group row showcase_row_area">
                       <div class="col-md-3 showcase_text_area">
                         <label for="inputType1">*Password</label>
                       </div>
                       <div class="col-md-9 showcase_content_area">
-                        <input type="text" class="form-control" id="user_pw" name="user_pw" placeholder="Sara Watson">
+                        <input type="password" class="form-control" id="user_pw" name="user_pw" placeholder="6 - 20, eng+number collection">
+                      </div>
+                    </div>
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">*Password Check</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <input type="password" class="form-control" id="pwChk" placeholder="Password Check">
                       </div>
                     </div>
                     <div class="form-group row showcase_row_area">
@@ -107,7 +216,7 @@
                         <input type="email" class="form-control" id="user_email" name="user_email" placeholder="aaa@aaa.com">
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                    <button type="button" id="registerButton" class="btn btn-primary btn-block">Sign in</button>
                   </form>
                   <div class="signup-link">
                     <p>Do you Already have Account??</p>

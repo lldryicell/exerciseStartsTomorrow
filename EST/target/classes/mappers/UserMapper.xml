@@ -19,8 +19,10 @@
 	    		user
 	    	where
 	    		user_id = #{user_id}
-	    		and
-	    		user_pw = #{user_pw}
+	    	<if test="user_pw != null">
+		    	and
+		    	user_pw = #{user_pw}
+	    	</if>
 	    </select>
 	    <insert id="signup" parameterType="user">
 	    	insert into
