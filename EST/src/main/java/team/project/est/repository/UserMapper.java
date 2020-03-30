@@ -6,4 +6,6 @@ public interface UserMapper {
 
 	public UserVO login(UserVO user);
 
+	public int signup(UserVO user);
+
 }

@@ -19,7 +19,36 @@
 	    		user
 	    	where
 	    		user_id = #{user_id}
-	    		and
-	    		user_pw = #{user_pw}
+	    	<if test="user_pw != null">
+		    	and
+		    	user_pw = #{user_pw}
+	    	</if>
 	    </select>
+	    <insert id="signup" parameterType="user">
+	    	insert into
+	    		user(
+		    		user_seq,
+		    		user_id,
+		    		user_pw,
+		    		user_first_name,
+		    		user_last_name,
+		    		user_nick,
+		    		user_age,
+		    		user_gender,
+		    		user_email,
+		    		user_active
+	    		)
+	    	values(
+	    		#{user_seq},
+	    		#{user_id},
+	    		#{user_pw},
+	    		#{user_first_name},
+	    		#{user_last_name},
+	    		#{user_nick},
+	    		#{user_age},
+	    		#{user_gender},
+	    		#{user_email},
+	    		#{user_active}
+	    	)
+	    </insert>
 	</mapper>

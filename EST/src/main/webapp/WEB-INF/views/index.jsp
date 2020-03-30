@@ -235,7 +235,7 @@
       <!-- 로그인 하지 않은 유저에게 이 사이트를 간단히 소개하는 페이지. -->
       <!-- partial -->
         <div class="page-content-wrapper-inner">
-          	<div class="content-viewport">
+          	<div class="content-viewport"> 
       			<!-- code here -->
       		</div>
       	</div>

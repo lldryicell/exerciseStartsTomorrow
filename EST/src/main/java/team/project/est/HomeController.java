@@ -1,5 +1,7 @@
 package team.project.est;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,8 +20,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/loginPage", method = RequestMethod.GET)
-	public String loginPage() {
+	public String loginPage(HttpSession session) {
+		session.invalidate();
 		return "login";
+	}
+	
+	@RequestMapping(value = "/signupPage", method = RequestMethod.GET)
+	public String signupPage() {
+		return "signup";
 	}
 	
 }
