@@ -3,7 +3,33 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	<mapper namespace="team.project.est.repository.WorkMapper">
-	    <!-- <select id="" parameterType="" resultType="">
-	    	
-	    </select> -->
+	    <select id="getDate" parameterType="string" resultType="string">
+	    	select 
+				work_start_date 
+			from 
+				work 
+			where 
+				<![CDATA[work_start_date <= 20200406]]>
+    			and 
+   				<![CDATA[work_start_date > date_sub(20200406, interval 7 day)]]>
+    			and 
+    			user_id = #{user_id} 
+			group by 
+				work_start_date
+	    </select>
+	    
+	    <select id="getAvgData" parameterType="string" resultType="double">
+	    	select 
+				avg(work_success_rate)
+			from 
+				work 
+			where 
+				<![CDATA[work_start_date <= 20200406]]>
+    			and 
+   				<![CDATA[work_start_date > date_sub(20200406, interval 7 day)]]>
+    			and 
+    			user_id = #{user_id} 
+			group by 
+				work_start_date
+	    </select>
 	</mapper>

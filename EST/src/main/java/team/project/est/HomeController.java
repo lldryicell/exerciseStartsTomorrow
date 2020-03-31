@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import team.project.est.dto.UserVO;
+
 
 @Controller
 public class HomeController {
@@ -31,8 +33,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/chartPage", method = RequestMethod.GET)
-	public String chartPage() {
-		return "chart";
+	public String chartPage(UserVO user) {
+		String user_id = user.getUser_id();
+		
+		return "redirect:/chart?user_id="+user_id;
 	}
 	
 }

@@ -200,7 +200,7 @@
 	            </a>
 	          </li>
 	          <li>
-	            <a href="chartPage">
+	            <a href="chartPage?user_id=${sessionScope.user_id}">
 	              <span class="link-title">User Analysis Charts</span>
 	              <i class="mdi mdi-chart-donut link-icon"></i>
 	            </a>

@@ -2,8 +2,23 @@ package team.project.est.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Utility {
+	
+	/**
+	 * change double percentage to int percentage method
+	 * 
+	 * @param percentage of double format
+	 * @return percentage of int format
+	 */
+	public int percentage(double num) {
+		int result = 0;
+		
+		result = (int)(num*100);
+		
+		return result;
+	}
 	
 	/**
 	 * what day is it Today method
@@ -19,6 +34,30 @@ public class Utility {
 		String strToday = sdf.format(c1.getTime());
 		
 		return strToday;
+	}
+	
+	/**
+	 * change inputedDate to format("MM. dd") method
+	 * 
+	 * @param inputed date
+	 * @return today's date String(MM. dd)
+	 * 
+	 */
+	public String changeDateFormat(String inputedDate) {
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		Date date;
+		try {
+			date = transFormat.parse(inputedDate);
+			
+			transFormat = new SimpleDateFormat("MM. dd");
+			String result = transFormat.format(date);
+			return result;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "";
 	}
 
 	
