@@ -27,17 +27,27 @@
   <script type="text/javascript">
   	$(function(){
   		
-  	  var weekAvgData;//나중에 데이터 조작 부분 만들고 나면 Ajax를 통해 값을 주고 받을 예정.
+  	  var weekAvgData = new Array();//나중에 데이터 조작 부분 만들고 나면 Ajax를 통해 값을 주고 받을 예정.
+  	  var lastWeekDate = new Array();//이전 1주일간 일정이 있던 날짜 데이터
   	  var entCompNumData;//이 변수들은 JS배열변수가 될 것임.
+  	  
+  	  <c:forEach items="${weekDateList}" var="date">
+	  	lastWeekDate.push("${date}");
+	  </c:forEach>
+  	  
+  	  <c:forEach items="${avgDataList}" var="date">
+  		weekAvgData.push("${date}");
+	  </c:forEach>
+  	  
 
   	  if ($("#chartjs-staked-line-chart").length) {
   	    var options = {
   	      type: 'line',
   	      data: {
-  	        labels: ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+  	        labels: lastWeekDate,
   	        datasets: [{
-  	            label: '# rate',
-  	            data: [25, 0, 33, 75, 50, 100.0],
+  	            label: 'complete percent',
+  	            data: weekAvgData,
   	            borderWidth: 2,
   	            fill: false,
   	            backgroundColor: chartColors[0],
@@ -266,7 +276,7 @@
           </a>
         </li>
         <li>
-          <a href="chartPage">
+          <a href="chartPage?user_id=${sessionScope.user_id}">
             <span class="link-title">User Analysis Charts</span>
             <i class="mdi mdi-chart-donut link-icon"></i>
           </a>
