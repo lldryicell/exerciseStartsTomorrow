@@ -47,12 +47,12 @@
 				*
 			from 
 				work 
-			<if test="user_id != null">
 			where
+			<if test="user_id != null">
 				user_id = #{user_id}
-			</if>
 				and 
-				work_end_date >= now()
+			</if>
+				<![CDATA[work_end_date >= now()]]>
 			order by
 				work_end_date asc
 	    </select>

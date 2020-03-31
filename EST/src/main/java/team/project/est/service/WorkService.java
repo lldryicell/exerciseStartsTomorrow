@@ -65,8 +65,6 @@ public class WorkService {
 
 	public ArrayList<WorkVO> expSoonList(String user_id) {
 		// TODO Auto-generated method stub
-		int tmp = 0;
-		
 		UserVO user = new UserVO();
 		user.setUser_id(user_id);
 		
