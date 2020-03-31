@@ -200,7 +200,7 @@
 	            </a>
 	          </li>
 	          <li>
-	            <a href="chartPage">
+	            <a href="chartPage?user_id=${sessionScope.user_id}">
 	              <span class="link-title">User Analysis Charts</span>
 	              <i class="mdi mdi-chart-donut link-icon"></i>
 	            </a>
@@ -216,6 +216,18 @@
 		        <a href="${pageContext.request.contextPath}/resources/docs/docs.html">
 		          <span class="link-title">Documentation</span>
 		          <i class="mdi mdi-asterisk link-icon"></i>
+		        </a>
+		      </li>
+		      <li>
+		        <a href="https://demo.themewagon.com/preview/free-responsive-bootstrap-4-admin-dashboard-template-label">
+		          <span class="link-title">FrontSource</span>
+		          <i class="mdi mdi-language-css3 link-icon"></i>
+		        </a>
+		      </li>
+		      <li>
+		        <a href="https://github.com/lldryicell/ExerciseStartsTomorrow">
+		          <span class="link-title">Github</span>
+		          <i class="mdi mdi-github-circle link-icon"></i>
 		        </a>
 		      </li>
 	        </ul>
