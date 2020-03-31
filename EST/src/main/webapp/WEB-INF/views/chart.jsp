@@ -27,9 +27,9 @@
   <script type="text/javascript">
   	$(function(){
   		
-  	  var weekAvgData = new Array();//나중에 데이터 조작 부분 만들고 나면 Ajax를 통해 값을 주고 받을 예정.
-  	  var lastWeekDate = new Array();//이전 1주일간 일정이 있던 날짜 데이터
-  	  var entCompNumData;//이 변수들은 JS배열변수가 될 것임.
+  	  var weekAvgData = new Array();//last Week Average Data
+  	  var lastWeekDate = new Array();//last Week Date
+  	  var entCompNumData = new Array();//Entire Completed work Number Data
   	  
   	  <c:forEach items="${weekDateList}" var="date">
 	  	lastWeekDate.push("${date}");
@@ -37,6 +37,10 @@
   	  
   	  <c:forEach items="${avgDataList}" var="date">
   		weekAvgData.push("${date}");
+	  </c:forEach>
+  	  
+  	  <c:forEach items="${entireComp}" var="date">
+  		entCompNumData.push("${date}");
 	  </c:forEach>
   	  
 
@@ -76,7 +80,7 @@
   	  if ($("#chartjs-doughnut-chart").length) {
   	    var DoughnutData = {
   	      datasets: [{
-  	        data: [5, 3, 20],
+  	        data: entCompNumData,
   	        backgroundColor: chartColors,
   	        borderColor: chartColors,
   	        borderWidth: chartColors
@@ -257,16 +261,16 @@
   <div class="page-body">
     <!-- partial:../../partials/_sidebar.html -->
     <div class="sidebar">
-      <div class="user-profile">
-        <div class="display-avatar animated-avatar">
-          <img class="profile-img img-lg rounded-circle" src="${pageContext.request.contextPath}/resources/assets/images/profile/male/image_1.png"
-            alt="profile image">
-        </div>
-        <div class="info-wrapper">
-          <p class="user-name">Allen Clerk</p>
-          <h6 class="display-income">$3,400,00</h6>
-        </div>
-      </div>
+      <div class="user-profile"><!-- 접속한 유저 프로필 -->
+	    <div class="display-avatar animated-avatar">
+	      <img class="profile-img img-lg rounded-circle" src="${pageContext.request.contextPath}/resources/assets/images/profile/male/image_1.png" 
+	      alt="profile image">
+	    </div>
+	    <div class="info-wrapper">
+	      <p class="user-name">${sessionScope.user_nick}</p>
+	      <h6 class="display-income">${sessionScope.user_email}</h6>
+	    </div>
+	  </div>
       <ul class="navigation-menu">
         <li class="nav-category-divider">MAIN</li>
         <li>
@@ -292,6 +296,18 @@
           <a href="${pageContext.request.contextPath}/resources/docs/docs.html">
             <span class="link-title">Documentation</span>
             <i class="mdi mdi-asterisk link-icon"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://demo.themewagon.com/preview/free-responsive-bootstrap-4-admin-dashboard-template-label">
+            <span class="link-title">FrontSource</span>
+            <i class="mdi mdi-language-css3 link-icon"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/lldryicell/ExerciseStartsTomorrow">
+            <span class="link-title">Github</span>
+            <i class="mdi mdi-github-circle link-icon"></i>
           </a>
         </li>
       </ul>
@@ -335,65 +351,35 @@
         </div>
         <div class="col-lg-4 col-md-6 equel-grid" style="max-width: 100%">
           <div class="grid table-responsive">
+          <h2 class="grid-title">임박한 일정 목록 Top 5</h2>
             <table class="table table-stretched">
               <thead>
                 <tr>
                   <th>일정이름</th>
                   <th>마감일</th>
-                  <th>남은시간</th>
+                  <th>완료현황</th>
                 </tr>
               </thead>
               <tbody>
+                <c:forEach items="${expSoonList}" var="data">
                 <tr>
                   <td>
-                    <p class="mb-n1 font-weight-medium">gotoMarket</p>
-                    <small class="text-gray">for Dinner Time</small>
+                    <p class="mb-n1 font-weight-medium">${data.work_title}</p>
+                    <small class="text-gray">${data.work_memo}</small>
                   </td>
-                  <td class="font-weight-medium">2020.04.05</td>
+                  <td class="font-weight-medium">${data.work_end_date}</td>
+                  <c:if test="${data.work_success_rate>=70}">
                   <td class="text-danger font-weight-medium">
-                    <div class="badge badge-success">-1.39%</div>
+                    <div class="badge badge-success">${data.work_success_rate}%</div>
                   </td>
-                </tr>
-                <tr>
-                  <td>
-                     <p class="mb-n1 font-weight-medium">Hospitor</p>
-                     <small class="text-gray">dentist</small>
-                  </td>
-                  <td class="font-weight-medium">2020.04.05</td>
+                  </c:if>
+                  <c:if test="${data.work_success_rate<70}">
                   <td class="text-danger font-weight-medium">
-                    <div class="badge badge-danger">-1.17%</div>
+                    <div class="badge badge-danger">${data.work_success_rate}%</div>
                   </td>
+                  </c:if>
                 </tr>
-                <tr>
-                  <td>
-                    <p class="mb-n1 font-weight-medium">move day</p>
-                      <small class="text-gray">go to Oosaka</small>
-                    </td>
-                    <td class="font-weight-medium">2020.04.03</td>
-                    <td class="text-danger font-weight-medium">
-                      <div class="badge badge-success">-0.24%</div>
-                    </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p class="mb-n1 font-weight-medium">party day</p>
-                    <small class="text-gray">on anna's castle</small>
-                  </td>
-                  <td class="font-weight-medium">2020.03.31</td>
-                  <td class="text-success font-weight-medium">
-                    <div class="badge badge-success">+0.15%</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p class="mb-n1 font-weight-medium">KIM's birthday</p>
-                    <small class="text-gray">it will celebrate in japan</small>
-                  </td>
-                  <td class="font-weight-medium">2020.04.29</td>
-                  <td class="text-success font-weight-medium">
-                    <div class="badge badge-success">+0.67%</div>
-                  </td>
-                </tr>
+                </c:forEach>
               </tbody>
             </table>
           </div>

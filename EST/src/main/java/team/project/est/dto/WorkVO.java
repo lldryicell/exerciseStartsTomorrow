@@ -8,13 +8,14 @@ public class WorkVO {
 	private String work_inputed_date;
 	private String work_alert_date;
 	private String work_title;
+	private String work_memo;
 	private double work_success_rate;
 	private int work_priority;
 	private boolean work_complete;
 
-	public WorkVO(String work_seq, String user_id, String work_start, String work_end_date,
-			String work_inputed_date, String work_alert_date, String work_title, double work_success_rate,
-			int work_priority, boolean work_complete) {
+	public WorkVO(String work_seq, String user_id, String work_start, String work_end_date, String work_inputed_date,
+			String work_alert_date, String work_title, String work_memo, double work_success_rate, int work_priority,
+			boolean work_complete) {
 		super();
 		this.work_seq = work_seq;
 		this.user_id = user_id;
@@ -23,6 +24,7 @@ public class WorkVO {
 		this.work_inputed_date = work_inputed_date;
 		this.work_alert_date = work_alert_date;
 		this.work_title = work_title;
+		this.work_memo = work_memo;
 		this.work_success_rate = work_success_rate;
 		this.work_priority = work_priority;
 		this.work_complete = work_complete;
@@ -113,12 +115,20 @@ public class WorkVO {
 		this.work_complete = work_complete;
 	}
 
+	public String getWork_memo() {
+		return work_memo;
+	}
+
+	public void setWork_memo(String work_memo) {
+		this.work_memo = work_memo;
+	}
+
 	@Override
 	public String toString() {
-		return "ProfileImageVo [work_seq=" + work_seq + ", user_id=" + user_id + ", work_start=" + work_start
+		return "WorkVO [work_seq=" + work_seq + ", user_id=" + user_id + ", work_start=" + work_start
 				+ ", work_end_date=" + work_end_date + ", work_inputed_date=" + work_inputed_date + ", work_alert_date="
-				+ work_alert_date + ", work_title=" + work_title + ", work_success_rate=" + work_success_rate
-				+ ", work_priority=" + work_priority + ", work_complete=" + work_complete + "]";
+				+ work_alert_date + ", work_title=" + work_title + ", work_memo=" + work_memo + ", work_success_rate="
+				+ work_success_rate + ", work_priority=" + work_priority + ", work_complete=" + work_complete + "]";
 	}
 
 }

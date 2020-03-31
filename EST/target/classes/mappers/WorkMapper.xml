@@ -32,4 +32,28 @@
 			group by 
 				work_start_date
 	    </select>
+	    
+	    <select id="AllPercentageData" parameterType="string" resultType="double">
+	    	select 
+				work_success_rate
+			from 
+				work 
+			where
+    			user_id = #{user_id}
+	    </select>
+	    
+	    <select id="allList" parameterType="user" resultType="work">
+	    	select 
+				*
+			from 
+				work 
+			<if test="user_id != null">
+			where
+				user_id = #{user_id}
+			</if>
+				and 
+				work_end_date >= now()
+			order by
+				work_end_date asc
+	    </select>
 	</mapper>

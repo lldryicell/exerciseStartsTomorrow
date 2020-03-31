@@ -218,6 +218,18 @@
 		          <i class="mdi mdi-asterisk link-icon"></i>
 		        </a>
 		      </li>
+		      <li>
+		        <a href="https://demo.themewagon.com/preview/free-responsive-bootstrap-4-admin-dashboard-template-label">
+		          <span class="link-title">FrontSource</span>
+		          <i class="mdi mdi-language-css3 link-icon"></i>
+		        </a>
+		      </li>
+		      <li>
+		        <a href="https://github.com/lldryicell/ExerciseStartsTomorrow">
+		          <span class="link-title">Github</span>
+		          <i class="mdi mdi-github-circle link-icon"></i>
+		        </a>
+		      </li>
 	        </ul>
       	</c:if>
       	<c:if test="${sessionScope.user_seq == null}"><!-- 접속한 유저가 로그인 하지 않았을 경우 -->
