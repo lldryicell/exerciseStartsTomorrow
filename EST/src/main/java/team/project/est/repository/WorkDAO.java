@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import team.project.est.dto.UserVO;
 import team.project.est.dto.WorkVO;
 
 @Repository
@@ -22,12 +23,6 @@ public class WorkDAO {
 		
 		try {
 			result = mapper.getDate(user_id);
-			
-			System.out.print("date info list : ");
-			for (String string : result) {
-				System.out.print(string + " ");
-			}System.out.println();
-			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -43,13 +38,39 @@ public class WorkDAO {
 		WorkMapper mapper = session.getMapper(WorkMapper.class);
 		
 		try {
-			result = mapper.getAvgData(user_id);
-			
-			System.out.print("avg list : ");
-			for (double num: result) {
-				System.out.print(num + " ");
-			}System.out.println();
-			
+			result = mapper.getAvgData(user_id);			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	public ArrayList<Double> AllPercentageData(String user_id) {
+		// TODO Auto-generated method stub
+		
+		ArrayList<Double> result = null;
+		WorkMapper mapper = session.getMapper(WorkMapper.class);
+		
+		try {
+			result = mapper.AllPercentageData(user_id);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	public ArrayList<WorkVO> allList(UserVO user) {
+		// TODO Auto-generated method stub
+		
+		ArrayList<WorkVO> result = null;
+		WorkMapper mapper = session.getMapper(WorkMapper.class);
+		
+		try {
+			result = mapper.allList(user);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
