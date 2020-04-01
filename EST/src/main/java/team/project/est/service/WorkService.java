@@ -1,6 +1,8 @@
 package team.project.est.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -77,6 +79,34 @@ public class WorkService {
 			List.get(i).setWork_success_rate(util.percentage(List.get(i).getWork_success_rate()));
 			result.add(List.get(i));
 		}
+		return result;
+	}
+
+	public Map<String, String> getGoodWord(String user_id) {
+		// TODO Auto-generated method stub
+		HashMap<String, String> map = new HashMap<String, String>();
+		
+		double doubAvg = wd.getUsersAvg(user_id);
+		int intAvg = util.percentage(doubAvg);
+		
+		if(intAvg>70) {
+			map = util.getGoodWord(1);
+		} else if(intAvg>30) {
+			map = util.getGoodWord(2);
+		} else {
+			map = util.getGoodWord(3);
+		}
+		
+		return map;
+	}
+
+	public String userRank(String user_id) {
+		// TODO Auto-generated method stub
+		String result = "";
+		int percentage = util.percentage(wd.getUsersAvg(user_id));
+		
+		result = util.getRank(percentage);
+		
 		return result;
 	}
 	

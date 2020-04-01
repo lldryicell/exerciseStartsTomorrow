@@ -15,4 +15,6 @@ public interface WorkMapper {
 
 	public ArrayList<WorkVO> allList(UserVO user);
 
+	public double getUserAvg(String user_id);
+
 }
