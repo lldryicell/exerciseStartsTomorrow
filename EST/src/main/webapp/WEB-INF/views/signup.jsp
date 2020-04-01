@@ -216,6 +216,17 @@
                         <input type="email" class="form-control" id="user_email" name="user_email" placeholder="aaa@aaa.com">
                       </div>
                     </div>
+                    <div class="row showcase_row_area mb-3">
+                      <div class="col-md-3 showcase_text_area">
+                        <label>Profile Photo Upload</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="customFile">
+                          <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                      </div>
+                    </div>
                     <button type="button" id="registerButton" class="btn btn-primary btn-block">Sign in</button>
                   </form>
                   <div class="signup-link">
