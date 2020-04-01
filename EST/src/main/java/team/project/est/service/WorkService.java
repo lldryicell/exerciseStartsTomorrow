@@ -99,6 +99,16 @@ public class WorkService {
 		
 		return map;
 	}
+
+	public String userRank(String user_id) {
+		// TODO Auto-generated method stub
+		String result = "";
+		int percentage = util.percentage(wd.getUsersAvg(user_id));
+		
+		result = util.getRank(percentage);
+		
+		return result;
+	}
 	
 	
 }

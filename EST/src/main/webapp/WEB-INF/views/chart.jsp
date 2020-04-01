@@ -325,6 +325,41 @@
             </ol>
           </nav>
         </div>
+        
+        
+        <div class="content-viewport">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="grid">
+                <div class="grid-body">
+		          <h2 class="grid-title">지금 당신에게 필요한 명언</h2>
+		          <table class="table table-stretched">
+		            <tbody>
+		              <tr>
+		                <td>
+		                  <h6 class="mb-4 font-weight-medium">${goodWord}</h6>
+		                  <small class="text-gray">${goodWordFrom}</small>
+		                </td>
+		              </tr>
+		            </tbody>
+		          </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="grid">
+                <div class="grid-body">
+                  <h2 class="grid-title">달성률 등급</h2>
+                  <div class="item-wrapper">
+                  	<img style="margin-left:35%; margin-right:35%;" src="${pageContext.request.contextPath}/resources/assets/images/rank/${rank}.png" alt="rank Image" width="30%" height="30%">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
         <div class="content-viewport">
           <div class="row">
             <div class="col-md-6">
@@ -349,6 +384,8 @@
             </div>
           </div>
         </div>
+        
+        
         <div class="col-lg-4 col-md-6 equel-grid" style="max-width: 100%">
           <div class="grid table-responsive">
           <h2 class="grid-title">임박한 일정 목록 Top 5</h2>
@@ -384,22 +421,6 @@
             </table>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 equel-grid" style="max-width: 100%">
-          <div class="grid table-responsive">
-          <h2 class="grid-title">지금 당신에게 필요한 명언</h2>
-            <table class="table table-stretched">
-              <tbody>
-                <tr>
-                  <td>
-                    <h6 class="mb-4 font-weight-medium">${goodWord}</h6>
-                    <small class="text-gray">${goodWordFrom}</small>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
       </div>
       <!-- content viewport ends -->
       <!-- partial:../../partials/_footer.html -->

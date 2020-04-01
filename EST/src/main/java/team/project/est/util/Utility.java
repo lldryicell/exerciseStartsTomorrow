@@ -152,4 +152,29 @@ public class Utility {
 	public int randomRange(int n1, int n2) {
 		return (int) (Math.random() * (n2 - n1 + 1)) + n1;
 	}
+
+	/**
+	 * 유저의 전체달성률 평균에 따른 랭크 이름 반환 메서드
+	 * 
+	 * @param percentage(int)
+	 * @return rank(String)
+	 */
+	public String getRank(int percentage) {
+		// TODO Auto-generated method stub
+		String result = "";
+		
+		if (percentage>90) {
+			result = "05_master";
+		} else if (percentage>70) {
+			result = "04_diamond";
+		} else if (percentage>30) {
+			result = "03_gold";
+		} else if (percentage>10) {
+			result = "02_silver";
+		} else {
+			result = "01_bronze";
+		}
+		
+		return result;
+	}
 }

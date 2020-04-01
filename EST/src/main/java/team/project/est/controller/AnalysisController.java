@@ -38,6 +38,7 @@ public class AnalysisController {
 		int entireComp[] = { 0, 0, 0 };// {달성률 70% 이상의 갯수, 달성률30~70%의 갯수, 달성률 30%이하의 갯수}
 		ArrayList<WorkVO> expSoonList = null;
 		Map<String, String> goodWord = null;
+		String rank = "";
 		
 		System.out.println("analysis controller : " + user_id);
 
@@ -46,6 +47,7 @@ public class AnalysisController {
 		entireComp = ws.getCountEnt(user_id);
 		expSoonList = ws.expSoonList(user_id);
 		goodWord = ws.getGoodWord(user_id);
+		rank = ws.userRank(user_id);
 
 		model.addAttribute("weekDateList", weekDateList);
 		model.addAttribute("avgDataList", avgDataList);
@@ -53,6 +55,7 @@ public class AnalysisController {
 		model.addAttribute("expSoonList", expSoonList);
 		model.addAttribute("goodWord", goodWord.get("word"));
 		model.addAttribute("goodWordFrom", goodWord.get("from"));
+		model.addAttribute("rank", rank);
 
 		return "chart";
 	}
