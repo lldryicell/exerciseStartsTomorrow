@@ -56,4 +56,13 @@
 			order by
 				work_end_date asc
 	    </select>
+	    
+	    <select id="getUserAvg" parameterType="string" resultType="double">
+	    	select 
+				avg(work_success_rate)
+			from 
+				work 
+			where
+				user_id = #{user_id}
+	    </select>
 	</mapper>
