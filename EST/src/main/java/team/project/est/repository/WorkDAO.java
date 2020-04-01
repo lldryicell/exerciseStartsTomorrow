@@ -78,6 +78,22 @@ public class WorkDAO {
 		
 		return result;
 	}
+
+	public double getUsersAvg(String user_id) {
+		// TODO Auto-generated method stub
+		
+		double result = 0.0;
+		WorkMapper mapper = session.getMapper(WorkMapper.class);
+		
+		try {
+			result = mapper.getUserAvg(user_id);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	
 	
 }
