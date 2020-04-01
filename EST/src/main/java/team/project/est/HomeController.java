@@ -1,10 +1,14 @@
 package team.project.est;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import team.project.est.dto.UserVO;
 
@@ -33,10 +37,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/chartPage", method = RequestMethod.GET)
-	public String chartPage(UserVO user) {
-		String user_id = user.getUser_id();
-		
-		return "redirect:/chart?user_id="+user_id;
+	public String chartPage(UserVO user, RedirectAttributes redAtt) {
+		System.out.println("home controller : "+user.getUser_id());
+		redAtt.addFlashAttribute("data", user.getUser_id());
+		return "redirect:/chart";
 	}
 	
 }

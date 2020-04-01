@@ -29,6 +29,12 @@
 			<beans:ref bean="intercepter"/>
 		</interceptor>
 	</interceptors>
+	<interceptors>
+		<interceptor>
+			<mapping path="/chart"/>
+			<beans:ref bean="intercepter"/>
+		</interceptor>
+	</interceptors>
 	
 	<context:component-scan base-package="team.project.est" />
 	
