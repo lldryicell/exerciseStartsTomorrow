@@ -138,7 +138,7 @@
             <div class="grid-body">
               <div class="row">
                 <div class="col-lg-7 col-md-8 col-sm-9 col-12 mx-auto form-wrapper">
-                  <form action="signupNew" id="signupForm" method="post">
+                  <form action="signupNew" id="signupForm" method="post" enctype="multipart/form-data">
                   	<span style="color: red">*표는 필수 입력 사항입니다.</span><br><br>
                     <div class="form-group row showcase_row_area">
                       <div class="col-md-3 showcase_text_area">
@@ -222,8 +222,8 @@
                       </div>
                       <div class="col-md-9 showcase_content_area">
                         <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="customFile">
-                          <label class="custom-file-label" for="customFile">Choose file</label>
+                          <input type="file" name="uploadFile" class="custom-file-input" id="customFile">
+                          <label class="custom-file-label" for="customFile"></label>
                         </div>
                       </div>
                     </div>
