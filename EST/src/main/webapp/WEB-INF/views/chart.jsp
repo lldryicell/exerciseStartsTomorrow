@@ -186,7 +186,7 @@
               <div class="dropdown-body">
                 <div class="dropdown-list">
                   <div class="image-wrapper">
-                    <img class="profile-img" src="${pageContext.request.contextPath}/resources/assets/images/profile/male/image_1.png" alt="profile image">
+                    <img class="profile-img" src="${pageContext.request.contextPath}/resources/assets/images/profile/${sessionScope.profile_image_save_name}" alt="profile image">
                     <div class="status-indicator rounded-indicator bg-success"></div>
                   </div>
                   <div class="content-wrapper">
