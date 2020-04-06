@@ -29,11 +29,22 @@ public class UserDAO {
 		// TODO Auto-generated method stub
 		UserMapper mapper = session.getMapper(UserMapper.class);
 		int result = 0;
-		
-		System.out.println(user);
 		 
 		try {
 			result = mapper.signup(user);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return result;
+	}
+
+	public int updateUser(UserVO user) {
+		// TODO Auto-generated method stub
+		UserMapper mapper = session.getMapper(UserMapper.class);
+		int result = 0;
+		 
+		try {
+			result = mapper.updateUser(user);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

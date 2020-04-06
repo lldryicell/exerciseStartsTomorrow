@@ -8,4 +8,6 @@ public interface UserMapper {
 
 	public int signup(UserVO user);
 
+	public int updateUser(UserVO user);
+
 }

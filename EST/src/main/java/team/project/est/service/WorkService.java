@@ -75,7 +75,7 @@ public class WorkService {
 		
 		user.setUser_id(user_id);
 		
-		for (int i = 0; i < 5; i++) {//상위 5개만 가져올 예정
+		for (int i = 0; i < List.size() && i<5; i++) {//상위 5개만 가져올 예정
 			List.get(i).setWork_success_rate(util.percentage(List.get(i).getWork_success_rate()));
 			result.add(List.get(i));
 		}
