@@ -64,6 +64,29 @@ public class UserController {
 		}
 	}
 	
+	@RequestMapping(value = "/userSetting", method = RequestMethod.GET)
+	public String userSetting() {
+		return "signup";
+	}
+	
+	@RequestMapping(value = "/userUpdate", method = RequestMethod.POST)
+	public String userUpdate(UserVO user, HttpSession session, Model model, MultipartHttpServletRequest request, MultipartFile uploadFile) {
+		
+		int updateUser = us.updateUser(user);
+		int updateProfileImage = us.updateProfilePhoto(user, request, uploadFile);
+		
+		if (updateUser==1||updateProfileImage==1) {
+			if (us.getProfileImage(user.getUser_id()) != null) {
+				String profile_image_save_name = us.getProfileImage(user.getUser_id()).getImage_save_name();
+				session.setAttribute("profile_image_save_name", profile_image_save_name);
+			}
+			return "index";
+		} else {
+			model.addAttribute("message", "update Failed. Try Agane!");
+			return "signup";
+		}
+	}
+	
 
 	//----------------<JQuery>----------------//
 	

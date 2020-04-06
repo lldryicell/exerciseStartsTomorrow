@@ -38,6 +38,19 @@ public class FileDAO {
 		
 		return result;
 	}
+
+	public int updateProfilePhoto(ProfileImageVO img) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		FileMapper mapper = session.getMapper(FileMapper.class);
+		
+		try {
+			result = mapper.updateProfilePhoto(img);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return result;
+	}
 	
 	
 }

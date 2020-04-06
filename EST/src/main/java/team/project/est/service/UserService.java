@@ -42,22 +42,24 @@ public class UserService {
 	public int uploadProfilePhoto(UserVO user, MultipartHttpServletRequest request, MultipartFile uploadFile) {
 		// TODO Auto-generated method stub
 		int result = 0;
-		
-		String uploadPath = request.getSession().getServletContext().getRealPath("/");
-		ProfileImageVO img = new ProfileImageVO();
-		String seq = util.createSeq("file");
-		
-		img.setUser_id(user.getUser_id());
-		img.setImage_seq(seq);
-		img.setImage_save_name(seq+uploadFile.getOriginalFilename());
-		img.setImage_original_name(uploadFile.getOriginalFilename());
-		
-		try {
-			uploadFile.transferTo(new File(uploadPath+"resources/assets/images/profile/"+img.getImage_save_name()));
-			result = fd.inputProfilePhoto(img);
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+
+		if(uploadFile != null) {
+			String uploadPath = request.getSession().getServletContext().getRealPath("/");
+			ProfileImageVO img = new ProfileImageVO();
+			String seq = util.createSeq("file");
+			
+			img.setUser_id(user.getUser_id());
+			img.setImage_seq(seq);
+			img.setImage_save_name(seq+uploadFile.getOriginalFilename());
+			img.setImage_original_name(uploadFile.getOriginalFilename());
+			
+			try {
+				uploadFile.transferTo(new File(uploadPath+"resources/assets/images/profile/"+img.getImage_save_name()));
+				result = fd.inputProfilePhoto(img);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
 		}
 		
 		return result;
@@ -68,6 +70,63 @@ public class UserService {
 		ProfileImageVO result = null;
 		
 		result = fd.getProfileImage(user_id);
+		
+		return result;
+	}
+
+	public int updateUser(UserVO user) {
+		// TODO Auto-generated method stub
+		return ud.updateUser(user);
+	}
+
+	public int updateProfilePhoto(UserVO user, MultipartHttpServletRequest request, MultipartFile uploadFile) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		
+		ProfileImageVO isExist = null;
+		
+		isExist = fd.getProfileImage(user.getUser_id());
+		
+		if (isExist!=null) {
+			if(uploadFile != null) {
+				String uploadPath = request.getSession().getServletContext().getRealPath("/");
+				ProfileImageVO img = new ProfileImageVO();
+				String seq = util.createSeq("file");
+				
+				img.setUser_id(user.getUser_id());
+				img.setImage_seq(seq);
+				img.setImage_save_name(seq+uploadFile.getOriginalFilename());
+				img.setImage_original_name(uploadFile.getOriginalFilename());
+				
+				try {
+					uploadFile.transferTo(new File(uploadPath+"resources/assets/images/profile/"+img.getImage_save_name()));
+					result = fd.updateProfilePhoto(img); //update
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
+		} else {
+			if(uploadFile != null) {
+				String uploadPath = request.getSession().getServletContext().getRealPath("/");
+				ProfileImageVO img = new ProfileImageVO();
+				String seq = util.createSeq("file");
+				
+				img.setUser_id(user.getUser_id());
+				img.setImage_seq(seq);
+				img.setImage_save_name(seq+uploadFile.getOriginalFilename());
+				img.setImage_original_name(uploadFile.getOriginalFilename());
+				
+				try {
+					uploadFile.transferTo(new File(uploadPath+"resources/assets/images/profile/"+img.getImage_save_name()));
+					result = fd.inputProfilePhoto(img); //insert
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
+		}
+		
 		
 		return result;
 	}

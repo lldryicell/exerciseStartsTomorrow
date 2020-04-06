@@ -25,4 +25,15 @@
 	    	where
 	    		user_id = #{user_id}
 	    </select>
+	    
+	    <update id="updateProfilePhoto" parameterType="pImage">
+	    	update
+	    		profile_image
+	    	set
+	    		image_seq = #{image_seq},
+	    		image_original_name = #{image_original_name},
+	    		image_save_name = #{image_save_name}
+	    	where
+	    		user_id = #{user_id}
+	    </update>
 	</mapper>

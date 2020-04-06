@@ -8,4 +8,6 @@ public interface FileMapper {
 
 	public ProfileImageVO getProfileImage(String user_id);
 
+	public int updateProfilePhoto(ProfileImageVO img);
+
 }

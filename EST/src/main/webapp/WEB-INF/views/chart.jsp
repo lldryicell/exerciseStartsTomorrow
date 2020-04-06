@@ -284,6 +284,12 @@
             <i class="mdi mdi-chart-donut link-icon"></i>
           </a>
         </li>
+	      <li>
+	        <a href="userSetting">
+	          <span class="link-title">User Setting</span>
+	          <i class="mdi mdi-account-settings link-icon"></i>
+	        </a>
+	      </li>
 	    <li>
 	      <a href="logout">
 	        <span class="link-title">Logout</span>
