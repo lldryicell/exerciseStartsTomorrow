@@ -14,7 +14,7 @@
 	    	)
 	    </insert>
 	    
-	    <select id="getPImageInfo" parameterType="string" resultType="pImage">
+	    <select id="getProfileImage" parameterType="string" resultType="pImage">
 	    	select
 	    		image_seq,
 	    		user_id,

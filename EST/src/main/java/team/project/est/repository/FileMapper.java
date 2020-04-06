@@ -6,6 +6,6 @@ public interface FileMapper {
 
 	public int uploadProfileImg(ProfileImageVO img);
 
-	public ProfileImageVO getPImageInfo(String user_id);
+	public ProfileImageVO getProfileImage(String user_id);
 
 }

@@ -12,7 +12,7 @@ public class FileDAO {
 	@Autowired
 	SqlSession session;
 
-	public int iniputProfilePhoto(ProfileImageVO img) {
+	public int inputProfilePhoto(ProfileImageVO img) {
 		// TODO Auto-generated method stub
 		int result = 0;
 		FileMapper mapper = session.getMapper(FileMapper.class);
@@ -25,13 +25,13 @@ public class FileDAO {
 		return result;
 	}
 
-	public ProfileImageVO getPImageInfo(String user_id) {
+	public ProfileImageVO getProfileImage(String user_id) {
 		// TODO Auto-generated method stub
 		ProfileImageVO result = null;
 		FileMapper mapper = session.getMapper(FileMapper.class);
 		
 		try {
-			result = mapper.getPImageInfo(user_id);
+			result = mapper.getProfileImage(user_id);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

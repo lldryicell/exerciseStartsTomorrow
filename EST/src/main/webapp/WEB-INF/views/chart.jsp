@@ -263,8 +263,7 @@
     <div class="sidebar">
       <div class="user-profile"><!-- 접속한 유저 프로필 -->
 	    <div class="display-avatar animated-avatar">
-	      <img class="profile-img img-lg rounded-circle" src="${pageContext.request.contextPath}/resources/assets/images/profile/male/image_1.png" 
-	      alt="profile image">
+	      <img class="profile-img img-lg rounded-circle" src="${pageContext.request.contextPath}/resources/assets/images/profile/${sessionScope.profile_image_save_name}" alt="profile image">
 	    </div>
 	    <div class="info-wrapper">
 	      <p class="user-name">${sessionScope.user_nick}</p>

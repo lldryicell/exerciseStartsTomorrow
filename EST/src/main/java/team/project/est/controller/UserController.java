@@ -27,7 +27,10 @@ public class UserController {
 			model.addAttribute("message", "login Failed");
 			return "login";
 		} else {//유저가 들어왔을 때
-			String profile_image_save_name = us.getPImageInfo(result.getUser_id()).getImage_save_name();
+			if (us.getProfileImage(result.getUser_id()) != null) {
+				String profile_image_save_name = us.getProfileImage(result.getUser_id()).getImage_save_name();
+				session.setAttribute("profile_image_save_name", profile_image_save_name);
+			}
 			
 			session.setAttribute("user_seq", result.getUser_seq());
 			session.setAttribute("user_id", result.getUser_id());
@@ -37,7 +40,6 @@ public class UserController {
 			session.setAttribute("user_age", result.getUser_age());
 			session.setAttribute("user_gender", result.getUser_gender());
 			session.setAttribute("user_email", result.getUser_email());
-			session.setAttribute("profile_image_save_name", profile_image_save_name);
 			return "redirect:indexPage";
 		}
 	}

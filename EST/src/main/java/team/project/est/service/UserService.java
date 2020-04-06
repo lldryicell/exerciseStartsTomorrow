@@ -45,17 +45,16 @@ public class UserService {
 		
 		String uploadPath = request.getSession().getServletContext().getRealPath("/");
 		ProfileImageVO img = new ProfileImageVO();
+		String seq = util.createSeq("file");
 		
 		img.setUser_id(user.getUser_id());
-		img.setImage_seq(util.createSeq("file"));
-		img.setImage_save_name(util.createSeq("file")+uploadFile.getOriginalFilename());
+		img.setImage_seq(seq);
+		img.setImage_save_name(seq+uploadFile.getOriginalFilename());
 		img.setImage_original_name(uploadFile.getOriginalFilename());
 		
 		try {
 			uploadFile.transferTo(new File(uploadPath+"resources/assets/images/profile/"+img.getImage_save_name()));
-			System.out.println("imgData : "+img);
-			result = fd.iniputProfilePhoto(img);//왜 여기서 널포인트익셉션? ㅅㅂ
-			System.out.println("result : "+result);
+			result = fd.inputProfilePhoto(img);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -64,11 +63,11 @@ public class UserService {
 		return result;
 	}
 
-	public ProfileImageVO getPImageInfo(String user_id) {
+	public ProfileImageVO getProfileImage(String user_id) {
 		// TODO Auto-generated method stub
 		ProfileImageVO result = null;
 		
-		result = fd.getPImageInfo(user_id);
+		result = fd.getProfileImage(user_id);
 		
 		return result;
 	}
