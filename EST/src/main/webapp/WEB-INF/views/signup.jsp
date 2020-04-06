@@ -46,7 +46,7 @@
     								if(user_last_name!=''){
     									if(user_nick!=''){
     										if(user_age>=0 && user_age<=100){
-    							    			$("#signupForm").submit();
+    							    			$("#userUpdate").submit();
     		    	        				} else{
     		    	        					alert("age is 0 to 100");
     		    	        				}
@@ -70,6 +70,31 @@
     				}
     			}else{
     				alert("Id Check first, please");
+    			}
+    		});
+    		
+    		$("#updateButton").click(function(){
+    			var user_id = $("#user_id").val();
+    			var user_pw = $("#user_pw").val();
+    			var pwchk = $("#pwChk").val();
+    			var user_first_name = $("#user_first_name").val();
+    			var user_last_name = $("#user_last_name").val();
+    			var user_nick = $("#user_nick").val();
+    			var user_age = $("#user_age").val();
+    			
+    			
+    			if(user_pw!=''){
+					if(user_pw.length<=20 && user_pw.length>=6){
+						if(isPwChecked){
+    						$("#userUpdate").submit();
+						}else{
+							alert("inputed PasswordCheck is not equal Password");
+						}
+					}else{
+	    				alert("USER PW is 6 to 20 length of eng+number collection");
+					}
+    			} else{
+    				alert("please input PW");
     			}
     		});
     		
@@ -132,6 +157,117 @@
           </a>
         </div>
       </div>
+      <c:if test="${sessionScope.user_seq!=null}">
+      <div class="row">
+        <div class="col-lg-5 col-md-7 col-sm-9 col-11 mx-auto">
+          <div class="grid">
+            <div class="grid-body">
+              <div class="row">
+                <div class="col-lg-7 col-md-8 col-sm-9 col-12 mx-auto form-wrapper">
+                  <form action="userUpdate" id="userUpdate" method="post" enctype="multipart/form-data">
+                    <input type="hidden" class="form-control" id="user_id" name="user_id" value="${sessionScope.user_id}">
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">Password</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <input type="password" class="form-control" id="user_pw" name="user_pw" placeholder="6 - 20, eng+number collection">
+                      </div>
+                    </div>
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">Password Check</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <input type="password" class="form-control" id="pwChk" placeholder="Password Check">
+                      </div>
+                    </div>
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">First name</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <input type="text" class="form-control" id="user_first_name" name="user_first_name" value="${sessionScope.user_first_name}">
+                      </div>
+                    </div>
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">Last Name</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <input type="text" class="form-control" id="user_last_name" name="user_last_name" value="${sessionScope.user_last_name}">
+                      </div>
+                    </div>
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">Nickname</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <input type="text" class="form-control" id="user_nick" name="user_nick" value="${sessionScope.user_nick}">
+                      </div>
+                    </div>
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">Age</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <input type="number" class="form-control" id="user_age" name="user_age" value="${sessionScope.user_age}" placeholder="0~100" min="0" max="100">
+                      </div>
+                    </div>
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">Gender</label>
+                      </div>
+                        <div class="col-md-9 showcase_content_area">
+                          <select class="custom-select" name="user_gender">
+                            <c:if test="${sessionScope.user_gender == 'male'}">
+                            <option selected="selected" value="male">Male</option>
+                            <option value="female">Female</option>
+                            </c:if>
+                            <c:if test="${sessionScope.user_gender == 'MALE'}">
+                            <option selected="selected" value="male">Male</option>
+                            <option value="female">Female</option>
+                            </c:if>
+                            <c:if test="${sessionScope.user_gender == 'female'}">
+                            <option value="male">Male</option>
+                            <option selected="selected" value="female">Female</option>
+                            </c:if>
+                            <c:if test="${sessionScope.user_gender == 'FEMALE'}">
+                            <option selected="selected" value="male">Male</option>
+                            <option value="female">Female</option>
+                            </c:if>
+                          </select>
+                        </div>
+                      </div>
+                    <div class="form-group row showcase_row_area">
+                      <div class="col-md-3 showcase_text_area">
+                        <label for="inputType1">Email Address</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <input type="email" class="form-control" id="user_email" name="user_email" value="${sessionScope.user_email}" placeholder="aaa@aaa.com">
+                      </div>
+                    </div>
+                    <div class="row showcase_row_area mb-3">
+                      <div class="col-md-3 showcase_text_area">
+                        <label>Profile Photo Upload</label>
+                      </div>
+                      <div class="col-md-9 showcase_content_area">
+                        <div class="custom-file">
+                          <input type="file" name="uploadFile" class="custom-file-input" id="customFile">
+                          <label class="custom-file-label" for="customFile"></label>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="button" id="updateButton" class="btn btn-primary btn-block">Update Information</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </c:if>
+      <c:if test="${sessionScope.user_seq==null}">
       <div class="row">
         <div class="col-lg-5 col-md-7 col-sm-9 col-11 mx-auto">
           <div class="grid">
@@ -239,6 +375,7 @@
           </div>
         </div>
       </div>
+      </c:if>
       <div class="auth_footer">
         <p class="text-muted text-center">Â© Label Inc 2019</p>
       </div>
