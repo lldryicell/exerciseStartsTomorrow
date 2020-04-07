@@ -18,7 +18,7 @@
 	    	select
 	    		image_seq,
 	    		user_id,
-	    		image_original_name
+	    		image_original_name,
 	    		image_save_name
 	    	from
 	    		profile_image

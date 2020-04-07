@@ -48,6 +48,7 @@ public class AnalysisController {
 		expSoonList = ws.expSoonList(user_id);
 		goodWord = ws.getGoodWord(user_id);
 		rank = ws.userRank(user_id);
+		
 
 		model.addAttribute("weekDateList", weekDateList);
 		model.addAttribute("avgDataList", avgDataList);

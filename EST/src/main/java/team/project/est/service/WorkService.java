@@ -1,6 +1,8 @@
 package team.project.est.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -108,6 +110,20 @@ public class WorkService {
 		result = util.getRank(percentage);
 		
 		return result;
+	}
+
+	public ArrayList<WorkVO> getAlertList(String user_id) {
+		// TODO Auto-generated method stub
+		WorkVO data = new WorkVO();
+		
+		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMdd");
+		Date time = new Date();
+		String today = format1.format(time);
+		
+		data.setUser_id(user_id);
+		data.setWork_alert_date(today);
+		
+		return wd.getAlertList(data);
 	}
 	
 	

@@ -1,5 +1,7 @@
 package team.project.est.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +14,18 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import team.project.est.dto.UserVO;
+import team.project.est.dto.WorkVO;
 import team.project.est.service.UserService;
+import team.project.est.service.WorkService;
 
 @Controller
 public class UserController {
 
 	@Autowired
 	UserService us;
+	
+	@Autowired
+	WorkService ws;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(UserVO user, HttpSession session, Model model) {
@@ -32,6 +39,9 @@ public class UserController {
 				session.setAttribute("profile_image_save_name", profile_image_save_name);
 			}
 			
+			ArrayList<WorkVO> alertList = null;//alert 
+			alertList = ws.getAlertList(result.getUser_id());//alert 
+					
 			session.setAttribute("user_seq", result.getUser_seq());
 			session.setAttribute("user_id", result.getUser_id());
 			session.setAttribute("user_first_name", result.getUser_first_name());
@@ -40,6 +50,7 @@ public class UserController {
 			session.setAttribute("user_age", result.getUser_age());
 			session.setAttribute("user_gender", result.getUser_gender());
 			session.setAttribute("user_email", result.getUser_email());
+			session.setAttribute("alertList", alertList);//alert
 			return "redirect:indexPage";
 		}
 	}

@@ -94,6 +94,22 @@ public class WorkDAO {
 		
 		return result;
 	}
+
+	public ArrayList<WorkVO> getAlertList(WorkVO data) {
+		// TODO Auto-generated method stub
+		
+		ArrayList<WorkVO> result = null;
+		WorkMapper mapper = session.getMapper(WorkMapper.class);
+		
+		try {
+			result = mapper.getAlertList(data);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	
 	
 }

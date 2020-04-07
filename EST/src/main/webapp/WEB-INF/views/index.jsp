@@ -59,35 +59,20 @@
                   <h6 class="dropdown-title">Notifications</h6>
                   <p class="dropdown-title-text">You have 4 unread notification</p>
                 </div>
-                <div class="dropdown-body">
-                  <div class="dropdown-list">
-                    <div class="icon-wrapper rounded-circle bg-inverse-primary text-primary">
-                      <i class="mdi mdi-alert"></i>
-                    </div>
-                    <div class="content-wrapper">
-                      <small class="name">Storage Full</small>
-                      <small class="content-text">Server storage almost full</small>
-                    </div>
-                  </div>
-                  <div class="dropdown-list">
-                    <div class="icon-wrapper rounded-circle bg-inverse-success text-success">
-                      <i class="mdi mdi-cloud-upload"></i>
-                    </div>
-                    <div class="content-wrapper">
-                      <small class="name">Upload Completed</small>
-                      <small class="content-text">3 Files uploded successfully</small>
-                    </div>
-                  </div>
-                  <div class="dropdown-list">
-                    <div class="icon-wrapper rounded-circle bg-inverse-warning text-warning">
-                      <i class="mdi mdi-security"></i>
-                    </div>
-                    <div class="content-wrapper">
-                      <small class="name">Authentication Required</small>
-                      <small class="content-text">Please verify your password to continue using cloud services</small>
-                    </div>
-                  </div>
-                </div>
+                
+               <div class="dropdown-body" id = "noti">
+               <c:forEach items="${sessionScope.alertList}" var="item">
+                   <div class="dropdown-list">
+                     <div class="icon-wrapper rounded-circle bg-inverse-primary text-primary">
+                       <i class="mdi mdi-security"></i>
+                     </div>
+                     <div class="content-wrapper">
+                       <small class="name">${item.work_title}</small>
+                       <small class="content-text">${item.work_alert_date}</small>
+                     </div>
+                   </div>
+              </c:forEach>
+              </div>
                 <div class="dropdown-footer">
                   <a href="#">View All</a>
                 </div>

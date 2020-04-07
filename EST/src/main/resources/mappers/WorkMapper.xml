@@ -65,4 +65,15 @@
 			where
 				user_id = #{user_id}
 	    </select>
+	    
+	    <select id="getAlertList" parameterType="work" resultType="work">
+	    	select 
+				*
+			from 
+				work 
+			where
+    			user_id = #{user_id}
+    			and 
+    			work_alert_date = #{work_alert_date}
+	    </select>
 	</mapper>
