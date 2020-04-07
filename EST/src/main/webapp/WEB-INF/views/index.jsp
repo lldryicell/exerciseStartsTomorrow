@@ -21,12 +21,18 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/demo_1/style.css">
     <!-- Layout style -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/asssets/images/favicon.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+    		
+    	});
+    </script>
   </head>
   <body class="header-fixed">
     <!-- partial:partials/_header.html -->
     <nav class="t-header">
       <div class="t-header-brand-wrapper">
-        <a href="index.html">
+        <a href="indexPage">
           <img class="logo" src="${pageContext.request.contextPath}/resources/assets/images/logo.svg" alt="">
           <img class="logo-mini" src="${pageContext.request.contextPath}/resources/assets/images/logo_mini.svg" alt="">
         </a>
@@ -53,35 +59,20 @@
                   <h6 class="dropdown-title">Notifications</h6>
                   <p class="dropdown-title-text">You have 4 unread notification</p>
                 </div>
-                <div class="dropdown-body">
-                  <div class="dropdown-list">
-                    <div class="icon-wrapper rounded-circle bg-inverse-primary text-primary">
-                      <i class="mdi mdi-alert"></i>
-                    </div>
-                    <div class="content-wrapper">
-                      <small class="name">Storage Full</small>
-                      <small class="content-text">Server storage almost full</small>
-                    </div>
-                  </div>
-                  <div class="dropdown-list">
-                    <div class="icon-wrapper rounded-circle bg-inverse-success text-success">
-                      <i class="mdi mdi-cloud-upload"></i>
-                    </div>
-                    <div class="content-wrapper">
-                      <small class="name">Upload Completed</small>
-                      <small class="content-text">3 Files uploded successfully</small>
-                    </div>
-                  </div>
-                  <div class="dropdown-list">
-                    <div class="icon-wrapper rounded-circle bg-inverse-warning text-warning">
-                      <i class="mdi mdi-security"></i>
-                    </div>
-                    <div class="content-wrapper">
-                      <small class="name">Authentication Required</small>
-                      <small class="content-text">Please verify your password to continue using cloud services</small>
-                    </div>
-                  </div>
-                </div>
+                
+               <div class="dropdown-body" id = "noti">
+               <c:forEach items="${sessionScope.alertList}" var="item">
+                   <div class="dropdown-list">
+                     <div class="icon-wrapper rounded-circle bg-inverse-primary text-primary">
+                       <i class="mdi mdi-security"></i>
+                     </div>
+                     <div class="content-wrapper">
+                       <small class="name">${item.work_title}</small>
+                       <small class="content-text">${item.work_alert_date}</small>
+                     </div>
+                   </div>
+              </c:forEach>
+              </div>
                 <div class="dropdown-footer">
                   <a href="#">View All</a>
                 </div>
@@ -178,7 +169,7 @@
       	<c:if test="${sessionScope.user_seq != null}">
 	        <div class="user-profile"><!-- 접속한 유저 프로필 -->
 	          <div class="display-avatar animated-avatar">
-	            <img class="profile-img img-lg rounded-circle" src="${pageContext.request.contextPath}/resources/assets/images/profile/male/image_1.png" alt="profile image">
+	            <img class="profile-img img-lg rounded-circle" src="${pageContext.request.contextPath}/resources/assets/images/profile/${sessionScope.profile_image_save_name}" alt="profile image">
 	          </div>
 	          <div class="info-wrapper">
 	            <p class="user-name">${sessionScope.user_nick}</p>
@@ -188,15 +179,21 @@
 	        <ul class="navigation-menu">
 	          <li class="nav-category-divider">MAIN</li>
 	          <li>
-	            <a href="index.html">
+	            <a href="indexPage">
 	              <span class="link-title">Calendar&Todo</span>
 	              <i class="mdi mdi-gauge link-icon"></i>
 	            </a>
 	          </li>
 	          <li>
-	            <a href="pages/charts/chartjs.html">
+	            <a href="chartPage?user_id=${sessionScope.user_id}">
 	              <span class="link-title">User Analysis Charts</span>
 	              <i class="mdi mdi-chart-donut link-icon"></i>
+	            </a>
+	          </li>
+	          <li>
+	            <a href="userSetting">
+	              <span class="link-title">User Setting</span>
+	              <i class="mdi mdi-account-settings link-icon"></i>
 	            </a>
 	          </li>
 	          <li>
@@ -205,6 +202,25 @@
 	              <i class="mdi mdi-logout link-icon"></i>
 	            </a>
 	          </li>
+		      <li class="nav-category-divider">DOCS</li>
+		      <li>
+		        <a href="${pageContext.request.contextPath}/resources/docs/docs.html">
+		          <span class="link-title">Documentation</span>
+		          <i class="mdi mdi-asterisk link-icon"></i>
+		        </a>
+		      </li>
+		      <li>
+		        <a href="https://demo.themewagon.com/preview/free-responsive-bootstrap-4-admin-dashboard-template-label">
+		          <span class="link-title">FrontSource</span>
+		          <i class="mdi mdi-language-css3 link-icon"></i>
+		        </a>
+		      </li>
+		      <li>
+		        <a href="https://github.com/lldryicell/ExerciseStartsTomorrow">
+		          <span class="link-title">Github</span>
+		          <i class="mdi mdi-github-circle link-icon"></i>
+		        </a>
+		      </li>
 	        </ul>
       	</c:if>
       	<c:if test="${sessionScope.user_seq == null}"><!-- 접속한 유저가 로그인 하지 않았을 경우 -->
@@ -235,7 +251,7 @@
       <!-- 로그인 하지 않은 유저에게 이 사이트를 간단히 소개하는 페이지. -->
       <!-- partial -->
         <div class="page-content-wrapper-inner">
-          	<div class="content-viewport">
+          	<div class="content-viewport"> 
       			<!-- code here -->
       		</div>
       	</div>

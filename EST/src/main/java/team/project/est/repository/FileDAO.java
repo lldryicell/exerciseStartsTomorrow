@@ -4,47 +4,48 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import team.project.est.dto.UserVO;
+import team.project.est.dto.ProfileImageVO;
 
 @Repository
-public class UserDAO {
+public class FileDAO {
 
 	@Autowired
 	SqlSession session;
 
-	public UserVO searchUser(UserVO user) {
+	public int inputProfilePhoto(ProfileImageVO img) {
 		// TODO Auto-generated method stub
-		UserMapper mapper = session.getMapper(UserMapper.class);
-		UserVO result = null;
+		int result = 0;
+		FileMapper mapper = session.getMapper(FileMapper.class);
 		
 		try {
-			result = mapper.login(user);
+			result = mapper.uploadProfileImg(img);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return result;
 	}
 
-	public int signup(UserVO user) {
+	public ProfileImageVO getProfileImage(String user_id) {
 		// TODO Auto-generated method stub
-		UserMapper mapper = session.getMapper(UserMapper.class);
-		int result = 0;
-		 
+		ProfileImageVO result = null;
+		FileMapper mapper = session.getMapper(FileMapper.class);
+		
 		try {
-			result = mapper.signup(user);
+			result = mapper.getProfileImage(user_id);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		
 		return result;
 	}
 
-	public int updateUser(UserVO user) {
+	public int updateProfilePhoto(ProfileImageVO img) {
 		// TODO Auto-generated method stub
-		UserMapper mapper = session.getMapper(UserMapper.class);
 		int result = 0;
-		 
+		FileMapper mapper = session.getMapper(FileMapper.class);
+		
 		try {
-			result = mapper.updateUser(user);
+			result = mapper.updateProfilePhoto(img);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
