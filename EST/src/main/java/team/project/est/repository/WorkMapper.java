@@ -17,4 +17,6 @@ public interface WorkMapper {
 
 	public double getUserAvg(String user_id);
 
+	public ArrayList<WorkVO> getAlertList(WorkVO data);
+
 }
