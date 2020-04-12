@@ -240,9 +240,10 @@
       	<!-- 222번줄과 다르게 이 부분은 확실히 컨탠츠 추가 해줘야됌 -->
       	<!-- 실제 유저가 보게 될 페이지. 캘린더, 할일(Todo)추가해야됌 -->
       	<!-- partial -->
+      	<input type="hidden" name="user_seq" value="${sessonScope.user_seq}">
         <div class="page-content-wrapper-inner">
           	<div class="content-viewport">
-				<!-- code here -->
+				<!-- calendar code here -->
           	</div>
         </div>
         <!-- content viewport ends -->
@@ -252,7 +253,7 @@
       <!-- partial -->
         <div class="page-content-wrapper-inner">
           	<div class="content-viewport"> 
-      			<!-- code here -->
+      			<!-- init code here -->
       		</div>
       	</div>
       </c:if>
