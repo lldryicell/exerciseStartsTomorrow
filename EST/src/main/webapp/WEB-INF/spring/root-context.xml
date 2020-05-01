@@ -17,9 +17,9 @@
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
         <property name="url"
-            value="jdbc:log4jdbc:mysql://kdc1.gonetis.com:7676/estDB?useSSL=false&amp;serverTimezone=UTC">
+            value="jdbc:log4jdbc:mysql://127.0.0.1:3306/estDB?useSSL=false&amp;serverTimezone=UTC">
         </property>
-        <property name="username" value="nextdo_id"></property>
+        <property name="username" value="testid"></property>
         <property name="password" value="mysql1234"></property>
     </bean>    
 
